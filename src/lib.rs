@@ -175,7 +175,7 @@ impl<RS: OutputPin, EN: OutputPin, D4: OutputPin, D5: OutputPin, D6: OutputPin, 
 	}
 }
 
-impl<I2C: I2c> HD44780<I2CBus<I2C>> {
+impl<I2C: I2c<u8>> HD44780<I2CBus<I2C>> {
 	/// Create an instance of a `HD44780` from an i2c write peripheral,
 	/// the `HD44780` I2C address and a struct implementing the delay trait.
 	/// - The delay instance is used to sleep between commands to

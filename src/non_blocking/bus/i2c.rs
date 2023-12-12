@@ -15,7 +15,7 @@ const ENABLE: u8 = 0b0000_0100;
 // const READ_WRITE: u8 = 0b0000_0010; // Not used as no reading of the `HD44780` is done
 const REGISTER_SELECT: u8 = 0b0000_0001;
 
-impl<I2C: I2c> I2CBus<I2C> {
+impl<I2C: I2c<u8>> I2CBus<I2C> {
 	pub fn new(i2c_bus: I2C, address: u8) -> I2CBus<I2C> {
 		I2CBus { i2c_bus, address }
 	}

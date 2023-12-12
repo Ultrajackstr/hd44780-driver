@@ -13,7 +13,7 @@ const ENABLE: u8 = 0b0000_0100;
 // const READ_WRITE: u8 = 0b0000_0010; // Not used as no reading of the `HD44780` is done
 const REGISTER_SELECT: u8 = 0b0000_0001;
 
-impl<I2C: I2c> I2CBus<I2C> {
+impl<I2C: I2c<u8>> I2CBus<I2C> {
 	pub fn new(i2c_bus: I2C, address: u8) -> I2CBus<I2C> {
 		I2CBus { i2c_bus, address }
 	}
@@ -33,7 +33,7 @@ impl<I2C: I2c> I2CBus<I2C> {
 	}
 }
 
-impl<I2C: I2c> DataBus for I2CBus<I2C> {
+impl<I2C: I2c<u8>> DataBus for I2CBus<I2C> {
 	fn write<D: DelayNs>(&mut self, byte: u8, data: bool, delay: &mut D) -> Result<()> {
 		let upper_nibble = byte & 0xF0;
 		self.write_nibble(upper_nibble, data, delay);
