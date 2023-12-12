@@ -42,32 +42,32 @@ mod tests {
 	fn cursor_visible() {
 		let dm = DisplayMode { cursor_visibility: Cursor::Visible, ..Default::default() };
 
-		assert!(dm.as_byte() & 0b0000_0010 != 0);
+		assert_ne!(dm.as_byte() & 0b0000_0010, 0);
 
 		let dm = DisplayMode { cursor_visibility: Cursor::Invisible, ..Default::default() };
 
-		assert!(dm.as_byte() & 0b0000_0010 == 0);
+		assert_eq!(dm.as_byte() & 0b0000_0010, 0);
 	}
 
 	#[test]
 	fn cursor_blink() {
 		let dm = DisplayMode { cursor_blink: CursorBlink::On, ..Default::default() };
 
-		assert!(dm.as_byte() & 0b0000_0001 != 0);
+		assert_ne!(dm.as_byte() & 0b0000_0001, 0);
 
 		let dm = DisplayMode { cursor_blink: CursorBlink::Off, ..Default::default() };
 
-		assert!(dm.as_byte() & 0b0000_0001 == 0);
+		assert_eq!(dm.as_byte() & 0b0000_0001, 0);
 	}
 
 	#[test]
 	fn display_visible() {
 		let dm = DisplayMode { display: Display::On, ..Default::default() };
 
-		assert!(dm.as_byte() & 0b0000_0100 != 0);
+		assert_ne!(dm.as_byte() & 0b0000_0100, 0);
 
 		let dm = DisplayMode { display: Display::Off, ..Default::default() };
 
-		assert!(dm.as_byte() & 0b0000_0100 == 0);
+		assert_eq!(dm.as_byte() & 0b0000_0100, 0);
 	}
 }
