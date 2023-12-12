@@ -124,7 +124,7 @@ impl<
 
 		hd.init_4bit(delay).await?;
 
-		return Ok(hd);
+		Ok(hd)
 	}
 }
 
